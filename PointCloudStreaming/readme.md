@@ -14,7 +14,7 @@ An rgb-d camera or lidar should be running in a ROS-running PC, which is connect
 2. Downsampling the pointcloud: `roslaunch pcl_ros voxel_grid_filter.launch gui:=false`
 3. Open a socket to Unity: `roslaunch rain_unity ur5_robotiq_unity_real.launch`
 
-### Instruction in Unity side
+### Instruction in Unity side ([Video](https://youtu.be/yPPFK_74rro))
 1. Copy this folder to "Assets" of your project.
 2. Put `enableOpenGL.cs` on Main Camera object.
 3. Put `PointCloudSubscriber.cs` on RosConnector object (Assuming that you already have ROSConnector). Then, set the name of pointcloud topic according to your ROS PC. 
