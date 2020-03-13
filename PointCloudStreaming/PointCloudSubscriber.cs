@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using RosSharp.RosBridgeClient.Messages.Sensor;
+using RosSharp.RosBridgeClient.MessageTypes.Sensor;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
@@ -10,7 +10,7 @@ using System.Threading;
 namespace RosSharp.RosBridgeClient
 {
     [RequireComponent(typeof(RosConnector))]
-    public class PointCloudSubscriber : Subscriber<Messages.Sensor.PointCloud2>
+    public class PointCloudSubscriber : UnitySubscriber<MessageTypes.Sensor.PointCloud2>
     {
         private byte[] byteArray;
         private bool isMessageReceived = false;
@@ -53,10 +53,10 @@ namespace RosSharp.RosBridgeClient
             byteArray = message.data;
 
 
-            width = message.width;
-            height = message.height;
-            row_step = message.row_step;
-            point_step = message.point_step;
+            width = (int)message.width;
+            height = (int)message.height;
+            row_step = (int)message.row_step;
+            point_step = (int)message.point_step;
 
             size = size / point_step;
             isMessageReceived = true;
