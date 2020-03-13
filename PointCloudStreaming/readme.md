@@ -1,12 +1,20 @@
 # PointClound Streaming from ROS
 
-This asset allows to render PointCloud2 from ROS into Unity
+This Unity asset allows to render PointCloud2 from ROS into Unity
 
 ### Dependency
-- ROS-sharp. 
-- An rgb-d camera or lidar should be running in a ROS-running PC, which is connected to a Unity-running PC by using a LAN cable.  
+- A rgb-d camera or Lidar ROS Package to receive PointCloud2 type data. This tutorial uses an [Orbbec Astra](https://orbbec3d.com/product-astra-pro/), for which you can use [ros_astra_camera](https://github.com/inmo-jang/ros_astra_camera_OLD). 
+- [ros-sharp](https://github.com/siemens/ros-sharp): This connects a ROS-running PC to a Unity-running PC. To install this, see [here](https://github.com/siemens/ros-sharp/wiki/User_Inst_Unity3DOnWindows).
+- (Optional) [perception_pcl](https://github.com/inmo-jang/perception_pcl): This package has several filtering functions for pointclouds. This may be necessary to reduce the size of the pointcloud to send over to the Unity-running PC. Otherwise, the rendering speed in Unity may be slow. 
 
-### Instruction 
+### Preparation in ROS side
+An rgb-d camera or lidar should be running in a ROS-running PC, which is connected to a Unity-running PC by using a LAN cable. For example, you can do so as the following commands, which are actually for my personal purpose.  
+
+1. Run a RGB-D camera: `roslaunch astra_camera astra.launch`
+2. Downsampling the pointcloud: `roslaunch pcl_ros voxel_grid_filter.launch gui:=false`
+3. Open a socket to Unity: `roslaunch rain_unity ur5_robotiq_unity_real.launch`
+
+### Instruction in Unity side ([Video](https://youtu.be/yPPFK_74rro))
 1. Copy this folder to "Assets" of your project.
 2. Put `enableOpenGL.cs` on Main Camera object.
 3. Put `PointCloudSubscriber.cs` on RosConnector object (Assuming that you already have ROSConnector). Then, set the name of pointcloud topic according to your ROS PC. 
