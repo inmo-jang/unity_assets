@@ -1,10 +1,12 @@
 # PointClound Streaming from ROS
 
-This Unity asset allows to render PointCloud2 from ROS into Unity
+This Unity asset allows to render PointCloud2 from ROS into Unity. 
+
+NOTE: If your ros-sharp version is old, which uses `Subscrbier` instead of `UnitySubscriber`, you need to git clone [this commit](https://github.com/inmo-jang/unity_assets/commit/331e7e8eb78af0d583c730671b1a0ff2fe0a174f).
 
 ### Dependency
 - A rgb-d camera or Lidar ROS Package to receive PointCloud2 type data. This tutorial uses an [Orbbec Astra](https://orbbec3d.com/product-astra-pro/), for which you can use [ros_astra_camera](https://github.com/inmo-jang/ros_astra_camera_OLD). 
-- [ros-sharp](https://github.com/siemens/ros-sharp): This connects a ROS-running PC to a Unity-running PC. To install this, see [here](https://github.com/siemens/ros-sharp/wiki/User_Inst_Unity3DOnWindows).
+- [ros-sharp](https://github.com/siemens/ros-sharp): This connects a ROS-running PC to a Unity-running PC. To install this, see [here](https://github.com/siemens/ros-sharp/wiki/User_Inst_Unity3DOnWindows). 
 - (Optional) [perception_pcl](https://github.com/inmo-jang/perception_pcl): This package has several filtering functions for pointclouds. This may be necessary to reduce the size of the pointcloud to send over to the Unity-running PC. Otherwise, the rendering speed in Unity may be slow. 
 
 ### Preparation in ROS side
