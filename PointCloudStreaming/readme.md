@@ -2,7 +2,7 @@
 
 This Unity asset allows to render PointCloud2 from ROS into Unity. 
 
-NOTE: If your ros-sharp version is old, which uses `Subscrbier` instead of `UnitySubscriber`, you need to git clone [this particular commit](https://github.com/inmo-jang/unity_assets/commit/331e7e8eb78af0d583c730671b1a0ff2fe0a174f).
+**NOTE: If your ros-sharp version is old, which uses `Subscrbier` instead of `UnitySubscriber`, you need to git clone [this particular commit](https://github.com/inmo-jang/unity_assets/commit/331e7e8eb78af0d583c730671b1a0ff2fe0a174f).**
 
 ### Dependency
 - A rgb-d camera or Lidar ROS Package to receive PointCloud2 type data. This tutorial uses an [Orbbec Astra](https://orbbec3d.com/product-astra-pro/), for which you can use [ros_astra_camera](https://github.com/inmo-jang/ros_astra_camera_OLD). 
@@ -49,9 +49,48 @@ You don't need to do anything with this script. The Point Size functionality dep
 
 #### Understanding PointCloud2 data 
 
-[PointCloud2](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/PointCloud2.html) has data field where there are the information (e.g. position, intensity, rgb, etc.) of each point. It may look like [this](https://answers.ros.org/question/58112/how-can-i-save-a-msg-to-a-file/). 
+[PointCloud2](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/PointCloud2.html) has data field where there are the information (e.g. position, intensity, rgb, etc.) of each point. It may look like [this](https://stackoverflow.com/questions/57507876/what-are-the-contents-of-pointcloud2). 
 
-In this example, each point has 32 data field (as shown in `point_step`), where its position is represented by `0`, `4`, and `8` th element (as shown in `offset`). Likewise, the intensity is shown from `16`th element. This offset information is IMPORTANT to extract any necessary information from a Unity script. 
+        header: 
+          seq: 1071
+          stamp: 
+            secs: 1521699326
+            nsecs: 676390000
+          frame_id: "velodyne"
+        height: 1
+        width: 66811
+        fields: 
+          - 
+            name: "x"
+            offset: 0
+            datatype: 7
+            count: 1
+          - 
+            name: "y"
+            offset: 4
+            datatype: 7
+            count: 1
+          - 
+            name: "z"
+            offset: 8
+            datatype: 7
+            count: 1
+          - 
+            name: "intensity"
+            offset: 16
+            datatype: 7
+            count: 1
+          - 
+            name: "ring"
+            offset: 20
+            datatype: 4
+            count: 1
+        is_bigendian: False
+        point_step: 32
+        row_step: 2137952
+        data: [235, 171, 54, 190, 53, 107, 250, ...                
+
+In this example, each point has 32 data field (as indicated by `point_step`), where its position is represented by `0`, `4`, and `8` th element (as indicated by `offset`). Likewise, the intensity is shown at `16`th element. This offset information is **IMPORTANT** to extract any necessary information from a Unity script. 
 
 For your project, the data field may not look the same. So, I recommend you to investigate your data first by executing, for example, 
 
