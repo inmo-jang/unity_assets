@@ -1,5 +1,7 @@
 # unity_assets
 
+![](https://zenodo.org/badge/246122710.svg)
+
 This is a collection of useful Unity assets for robotics and virtual reality. 
 
 Included are:
