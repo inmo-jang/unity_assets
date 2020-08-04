@@ -1,6 +1,6 @@
 # Adding an Ironman Helmet to your headset
 
-This Unity asset allows to have an Ironman helmet for your headset. This will decorate your project cool and make your audiences laugh! You should check the following example demonstrations. 
+This Unity asset allows to have an Ironman helmet for your headset. This will decorate your project cool and make your audiences laugh! You should check the following example demonstration videos. 
 
 - [Human-swarm interaction](https://youtu.be/LOIJPFM8YRA)
 - [Robot telemanipulation](https://youtu.be/qV9ol3f4JtY)
